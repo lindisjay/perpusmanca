@@ -42,7 +42,7 @@ Route::get('/transaksi/hapus/{id}','TransaksiController@destroy');
 Route:: resource('/laporan','LaporanController');
 
 // Register
-Route::get('/register', 'Auth\RegisterController@index')->name('register.index');
+Route::resource('/register', 'Auth\RegisterController');
 
 
 
