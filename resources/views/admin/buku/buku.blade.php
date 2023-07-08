@@ -31,7 +31,7 @@
                                                     <th>Penerbit</th>
                                                     <th>Kategori</th>
                                                     <th>Rak</th>
-                                                    <th>Jumlah</th>
+                                                    <th>Stok</th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
@@ -109,7 +109,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="addstok">Jumlah</label>
+                                                    <label for="addstok">Stok</label>
                                                     <input type="number" name="addstok" id="addstok"
                                                         class="form-control" id="exampleFormControlInput1">
                                                 </div>

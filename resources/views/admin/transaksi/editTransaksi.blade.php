@@ -54,10 +54,12 @@
                                             <input id="addqty_pinjam" type="number" name="addqty_pinjam" class="form-control"
                                                 value="{{ $transaksi->qty_pinjam }}">
                                         </div>
-                                        <div class="col-md-5">
-                                            <label for="addstatus">Status</label>
-                                            <input id="addstatus" type="text" name="addstatus" class="form-control"
-                                                value="{{ $transaksi->status }}">
+                                        <div class="form-group">
+                                            <label for="status">Status</label>
+                                            <select name="status" id="status" class="form-control">
+                                                <option value="dipinjam" @if($transaksi->status === 'dipinjam') selected @endif>Dipinjam</option>
+                                                <option value="kembali" @if($transaksi->status === 'kembali') selected @endif>Kembali</option>
+                                            </select>
                                         </div>
                                         @endrole
                                     </div>

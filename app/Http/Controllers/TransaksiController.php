@@ -45,6 +45,10 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'status' => 'required|in:dipinjam,kembali',
+        ]);
+
         $tambah_transaksi=new \App\Transaksi;
         $tambah_transaksi->id = $request->addid;
         $tambah_transaksi->nama = $request->addnama;
@@ -54,7 +58,7 @@ class TransaksiController extends Controller
         $tambah_transaksi->kd_buku = $request->addkd_buku;
         $tambah_transaksi->judul_buku = $request->addjudul_buku;
         $tambah_transaksi->qty_pinjam = $request->addqty_pinjam;
-        $tambah_transaksi->status = $request->addstatus;
+        $tambah_transaksi->status = $validatedData['status'];
         $tambah_transaksi->save();
         Alert::success('Pesan ','Data berhasil disimpan');
         return redirect('/transaksi');
@@ -94,6 +98,10 @@ class TransaksiController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'status' => 'required|in:dipinjam,kembali',
+        ]);
+
         $transaksi = Transaksi::find($id);
         $transaksi->id=$request->get('addid');
         $transaksi->nama = $request ->get ('addnama');
@@ -103,7 +111,7 @@ class TransaksiController extends Controller
         $transaksi->kd_buku = $request ->get ('addkd_buku');
         $transaksi->judul_buku = $request ->get ('addjudul_buku');
         $transaksi->qty_pinjam = $request ->get ('addqty_pinjam');
-        $transaksi->status = $request ->get ('addstatus');
+        $transaksi->status = $validatedData['status'];
         $transaksi->save();
         return redirect()->route('transaksi.index');
     }

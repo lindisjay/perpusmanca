@@ -44,7 +44,7 @@
                                                 value="{{ $buku->rak }}">
                                         </div>
                                         <div class="col-md-5">
-                                            <label for="addstok">Jumlah</label>
+                                            <label for="addstok">Stok</label>
                                             <input id="addstok" type="text" name="addstok" class="form-control"
                                                 value="{{ $buku->stok }}">
                                         </div>

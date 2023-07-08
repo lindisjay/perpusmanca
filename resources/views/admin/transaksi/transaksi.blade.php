@@ -122,8 +122,11 @@
                                                 <input type="number" name="addqty_pinjam" id="addqty_pinjam" class="form-control">
                                             </div>
                                             <div class="form-group">
-                                                <label for="addstatus">Status</label>
-                                                <input type="text" name="addstatus" id="addstatus" class="form-control">
+                                                <label for="status">Status</label>
+                                                <select name="status" id="status" class="form-control">
+                                                    <option value="dipinjam" @if($item->status === 'dipinjam') selected @endif>Dipinjam</option>
+                                                    <option value="kembali" @if($item->status === 'kembali') selected @endif>Kembali</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
