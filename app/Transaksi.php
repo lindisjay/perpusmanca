@@ -9,7 +9,7 @@ class Transaksi extends Model
 {
     protected $primaryKey = 'id';
     public $incrementing = false;
-    protected $keyType = 'string';
+    protected $keyType = 'integer';
     public $timestamps = false;
     protected $table = "peminjaman";
     protected $fillable=['id' ,'tgl_pinjam', 'tgl_kembali', 'kd_buku', 'judul_buku', 'qty_pinjam', 'nama','kelas', 'status'];
@@ -25,6 +25,10 @@ class Transaksi extends Model
 
         static::saved(function ($transaksi) {
             event(new TransaksiUpdated($transaksi));
+        });
+
+        static::creating(function ($model) {
+            $model->id = static::max('id') + 1;
         });
     }
 

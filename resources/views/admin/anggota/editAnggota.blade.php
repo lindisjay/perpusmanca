@@ -7,7 +7,7 @@
                     <h5 class="card-title fw-semibold mb-4"></h5>
                     <div class="card mb-0">
                         <div class="card-body p-4">
-                            <form action="{{ route('anggota.update', [$anggota->id]) }}" method="POST">
+                            <form action="{{ route('user.update', [$user->id]) }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="_method" value="PUT">
                                 <fieldset>
@@ -16,27 +16,27 @@
                                         <div class="col-md-5">
                                             <label for="addid">No</label>
                                             <input class="form-control" type="text" name="addid"
-                                                value="{{ $anggota->id }}" readonly>
+                                                value="{{ $user->id }}" readonly>
                                         </div>
                                         <div class="col-md-5">
                                             <label for="addnama">Nama Anggota</label>
                                             <input id="addnama" type="text" name="addnama" class="form-control"
-                                                value="{{ $anggota->nama }}">
+                                                value="{{ $user->nama }}">
                                         </div>
                                         <div class="col-md-5">
                                             <label for="addkelas">Kelas</label>
                                             <input id="addkelas" type="text" name="addkelas" class="form-control"
-                                                value="{{ $anggota->kelas }}">
+                                                value="{{ $user->kelas }}">
                                         </div>
                                         <div class="col-md-5">
                                             <label for="addjenis_kelamin">Jenis Kelamin</label>
                                             <input id="addjenis_kelamin" type="text" name="addjenis_kelamin"
-                                                class="form-control" value="{{ $anggota->jenis_kelamin }}">
+                                                class="form-control" value="{{ $user->jenis_kelamin }}">
                                         </div>
                                         <div class="col-md-5">
                                             <label for="addno_hp">No Hp</label>
                                             <input id="addno_hp" type="text" name="addno_hp" class="form-control"
-                                                value="{{ $anggota->no_hp }}">
+                                                value="{{ $user->no_hp }}">
                                         </div>
                                     </div>
                                 </fieldset>

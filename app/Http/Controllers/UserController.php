@@ -40,18 +40,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $save_user= new \App\User;
-        $save_user->name=$request->get('username');
-        $save_user->email=$request->get('email');
-        $save_user->password=bcrypt('password');
-        if ($request->get('roles')=='ADMIN') {
-            $save_user->assignRole('admin');
-        } else {
-            $save_user->assignRole('user');
-        }
-        $save_user->save();
-
-        return redirect()->route('user.index');
+        $tambah_anggota=new \App\User;
+        $tambah_anggota->id = $request->addid;
+        $tambah_anggota->name = $request->addname;
+        $tambah_anggota->kelas = $request->addkelas;
+        $tambah_anggota->email = $request->addemail;
+        $tambah_anggota->roles_id = $request->addroles_id;
+        $tambah_anggota->jenis_kelamin = $request->addjenis_kelamin;
+        $tambah_anggota->no_hp = $request->addno_hp;
+        $tambah_anggota->save();
+        Alert::success('Pesan ','Data berhasil disimpan');
+        return redirect('/user');
     }
 
     /**
@@ -92,6 +91,11 @@ class UserController extends Controller
         $user = User::find($id);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
         $user->assignRole($request->input('role'));
+        $user->name=$request->get('addname');
+        $user->kelas=$request->get('addkelas');
+        $user->jenis_kelamin=$request->get('addjenis_kelamin');
+        $user->no_hp=$request->get('addno_hp');
+        $user->save();
 
         return redirect()->route( 'user.index');
     }

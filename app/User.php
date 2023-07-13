@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 Use Spatie\Permission\Traits\HasRoles;
+use App\Anggota;
 
 class User extends Authenticatable
 {
@@ -17,8 +18,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
+    protected $guarded = [
+        'id' 
     ];
 
     /**
@@ -38,4 +39,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->id = static::max('id') + 1;
+        });
+
+        static::deleting(function ($user) {
+            // Hapus data anggota terkait
+            Anggota::where('nama', $user->name)->delete();
+        });
+    }
 }

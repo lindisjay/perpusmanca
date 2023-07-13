@@ -14,8 +14,8 @@ class AnggotaController extends Controller
      */
     public function index()
     {
-        $anggota=\App\Anggota::All();
-        return view('admin.anggota.anggota',['anggota'=>$anggota]);
+        $user=\App\User::All();
+        return view('admin.anggota.anggota',['user'=>$user]);
     }
 
     /**
@@ -36,15 +36,17 @@ class AnggotaController extends Controller
      */
     public function store(Request $request)
     {
-        $tambah_anggota=new \App\Anggota;
+        $tambah_anggota=new \App\User;
         $tambah_anggota->id = $request->addid;
-        $tambah_anggota->nama = $request->addnama;
+        $tambah_anggota->name = $request->addnama;
         $tambah_anggota->kelas = $request->addkelas;
+        $tambah_anggota->email = $request->addemail;
+        $tambah_anggota->roles_id = $request->addroles_id;
         $tambah_anggota->jenis_kelamin = $request->addjenis_kelamin;
         $tambah_anggota->no_hp = $request->addno_hp;
         $tambah_anggota->save();
         Alert::success('Pesan ','Data berhasil disimpan');
-        return redirect('/anggota');
+        return redirect('/user');
     }
 
     /**

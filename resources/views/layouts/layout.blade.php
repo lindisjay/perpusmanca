@@ -14,9 +14,6 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template-->
-    <!-- <link href="{{ asset('asset/sb-admin2/css/sb-admin-2.min.css') }}" rel="stylesheet"> -->
-
     <!--Data Table css-->
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <!-- End Data Table css-->
@@ -31,7 +28,7 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="./index.html" class="text-nowrap logo-img">
+                    <a href="/" class="text-nowrap logo-img">
                         <img src="{{ asset('asset/modernise/images/logos/perpus.png') }}" width="220" alt="">
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -56,7 +53,7 @@
                         <li class="nav-small-cap">
                             @role('admin')
                                 <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                                <span class="hide-menu">UI COMPONENTS</span>
+                                <span class="hide-menu">MASTER DATA</span>
                             </li>
 
                             <li class="sidebar-item">
@@ -69,7 +66,7 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ route('anggota.index') }}" aria-expanded="false">
+                                <a class="sidebar-link" href="#" aria-expanded="false">
                                     <span>
                                         <i class="ti ti-users"></i>
                                     </span>
@@ -106,14 +103,14 @@
                                 <span class="hide-menu">AUTH</span>
                             </li>
 
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ route('register.index') }}" aria-expanded="false">
-                                    <span>
-                                        <i class="ti ti-user-plus"></i>
-                                    </span>
-                                    <span class="hide-menu">Register</span>
-                                </a>
-                            </li>
+                            <!--<li class="sidebar-item">
+                                    <a class="sidebar-link" href="" aria-expanded="false">
+                                        <span>
+                                            <i class="ti ti-user-plus"></i>
+                                        </span>
+                                        <span class="hide-menu">Register</span>
+                                    </a>
+                                </li> -->
                         @endrole
                         <li class="sidebar-item">
                             <a class="sidebar-link" href=""

@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
 
 use Illuminate\Http\Request;
 use App\Buku;
-use App\Anggota;
 use App\Transaksi;
+use App\User;
 use Alert;
 
 class TransaksiController extends Controller
@@ -17,11 +19,11 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $anggota=\App\Anggota::All();
+        $user=\App\User::All();
         $buku=\App\Buku::All();
         $transaksi=\App\Transaksi::All();
         return view('admin.transaksi.transaksi', [
-            'anggota' => $anggota,
+            'user' => $user,
             'buku' =>$buku,
             'transaksi' => $transaksi
         ]);
@@ -32,10 +34,6 @@ class TransaksiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -49,20 +47,22 @@ class TransaksiController extends Controller
             'status' => 'required|in:dipinjam,kembali',
         ]);
 
-        $tambah_transaksi=new \App\Transaksi;
-        $tambah_transaksi->id = $request->addid;
-        $tambah_transaksi->nama = $request->addnama;
-        $tambah_transaksi->kelas = $request->addkelas;
-        $tambah_transaksi->tgl_pinjam = $request->addtgl_pinjam;
-        $tambah_transaksi->tgl_kembali = $request->addtgl_kembali;
-        $tambah_transaksi->kd_buku = $request->addkd_buku;
-        $tambah_transaksi->judul_buku = $request->addjudul_buku;
-        $tambah_transaksi->qty_pinjam = $request->addqty_pinjam;
+        $tambah_transaksi = new Transaksi();
+        $tambah_transaksi->id=$request->input('addid');
+        $tambah_transaksi->nama=$request->input('addnama');
+        $tambah_transaksi->kelas=$request->input('addkelas');
+        $tambah_transaksi->created_at = $request->input('addcreated_at');
+        $tambah_transaksi->tgl_kembali = $request->input('addtgl_kembali');
+        $tambah_transaksi->kd_buku = $request->input('addkd_buku');
+        $tambah_transaksi->judul_buku = $request->input('addjudul_buku');
+        $tambah_transaksi->qty_pinjam = $request->input('addqty_pinjam');
         $tambah_transaksi->status = $validatedData['status'];
         $tambah_transaksi->save();
-        Alert::success('Pesan ','Data berhasil disimpan');
+
+        Alert::success('Pesan', 'Data berhasil disimpan');
         return redirect('/transaksi');
     }
+
 
     /**
      * Display the specified resource.
@@ -85,8 +85,8 @@ class TransaksiController extends Controller
     {
         $transaksi = Transaksi::find($id);
         $buku = Buku::all();
-        $anggota = Anggota::all();
-        return view('admin.transaksi.editTransaksi', compact('transaksi', 'buku', 'anggota'));
+        $user = User::all();
+        return view('admin.transaksi.editTransaksi', compact('transaksi', 'buku', 'user'));
     }
 
     /**
@@ -106,7 +106,7 @@ class TransaksiController extends Controller
         $transaksi->id=$request->get('addid');
         $transaksi->nama = $request ->get ('addnama');
         $transaksi->kelas = $request ->get ('addkelas');
-        $transaksi->tgl_pinjam = $request ->get ('addtgl_pinjam');
+        $transaksi->created_at = $request ->get ('addcreated_at');
         $transaksi->tgl_kembali = $request ->get ('addtgl_kembali');
         $transaksi->kd_buku = $request ->get ('addkd_buku');
         $transaksi->judul_buku = $request ->get ('addjudul_buku');

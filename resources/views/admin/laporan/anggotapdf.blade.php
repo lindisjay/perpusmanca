@@ -34,20 +34,20 @@
         </thead>
         <tbody>
             @php $i=1 @endphp
-            @foreach ($anggota as $agt)
+            @foreach ($user as $user)
                 <tr align="center">
                     <td>{{ $i++ }}</td>
-                    <td>{{ $agt->nama }}</td>
-                    <td>{{ $agt->kelas }}</td>
-                    <td>{{ $agt->jenis_kelamin }}</td>
-                    <td>{{ $agt->no_hp }}</td>
+                    <td>{{ $user->nama }}</td>
+                    <td>{{ $user->kelas }}</td>
+                    <td>{{ $user->jenis_kelamin }}</td>
+                    <td>{{ $user->no_hp }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
     <div align="right">
         <h6>Tanda Tangan</h6><br>
-            <h6>{{ Auth::user()->name }}</h6>
+        <h6>{{ Auth::user()->name }}</h6>
     </div>
 
 </body>

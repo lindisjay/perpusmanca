@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth/login');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
@@ -31,8 +29,8 @@ Route::resource('/buku','BukuController'); //Create + Read
 Route::get('/buku/hapus/{kd_buku}','BukuController@destroy'); //Delete
 
  //Anggota
-Route::resource('/anggota','AnggotaController');
-Route::get('/anggota/hapus/{id}','AnggotaController@destroy');
+// Route::resource('/user','AnggotaController');
+// Route::get('/user/hapus/{id}','AnggotaController@destroy');
 
 //Peminjaman
 Route::resource('/transaksi','TransaksiController');
@@ -41,8 +39,14 @@ Route::get('/transaksi/hapus/{id}','TransaksiController@destroy');
 // Laporan
 Route:: resource('/laporan','LaporanController');
 
+Route::get('/logout', function(){
+    return view('auth/login');
+});
+
 // Register
-Route::post('/register', 'Auth\RegisterController@index')->name('register.index');
+// Route::resource('register', 'Auth\RegisterController');
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+
 
 
 

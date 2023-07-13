@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Transaksi;
-use Anggota;
+use User;
 use Buku;
 use PDF;
 use DB;
@@ -55,29 +55,30 @@ class LaporanController extends Controller
 
         if ($request->laporan == 'transaksi') {
             $trs = DB::table('peminjaman')
-                ->whereBetween('tgl_pinjam', [$tglawal, $tglakhir])
-                ->orderBy('tgl_pinjam', 'ASC')
+                ->whereBetween('created_at', [$tglawal, $tglakhir])
+                ->orderBy('created_at', 'ASC')
                 ->get();
 
             $pdf = PDF::loadView('admin.laporan.peminjaman_pdf', ['transaksi' => $trs])->setPaper('A4', 'landscape');
             return $pdf->stream();
-        } elseif ($request->laporan == 'anggota') {
-            $agt = DB::table('anggota')
+
+        } elseif ($request->laporan == 'user') {
+            $users = DB::table('users')
                 ->get();
 
-            $pdf = PDF::loadView('admin.laporan.anggotapdf', ['anggota' => $agt])->setPaper('A4', 'landscape');
+            $pdf = PDF::loadView('admin.laporan.anggotapdf', ['users' => $users])->setPaper('A4', 'landscape');
             return $pdf->stream();
+
         } elseif ($request->laporan == 'buku') {
-            $bku = DB::table('buku')
+            $buku = DB::table('buku')
                 ->get();
 
-            $pdf = PDF::loadView('admin.laporan.bukupdf', ['buku' => $bku])->setPaper('A4', 'landscape');
+            $pdf = PDF::loadView('admin.laporan.bukupdf', ['buku' => $buku])->setPaper('A4', 'landscape');
             return $pdf->stream();
         } else {
             // Tindakan yang akan diambil jika jenis tidak valid
             return redirect()->back()->with('error', 'Jenis laporan tidak valid.');
         }
-
     }
 
     /**

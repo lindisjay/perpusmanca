@@ -8,6 +8,9 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Anggota;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -36,11 +39,6 @@ class RegisterController extends Controller
      *
      * @return void
      */
-
-     public function index()
-     {
-         return view('auth.register');
-     }
 
     public function __construct()
     {
@@ -80,4 +78,6 @@ class RegisterController extends Controller
             return $user;
 
     }
+
+    
 }

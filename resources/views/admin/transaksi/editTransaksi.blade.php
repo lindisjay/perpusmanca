@@ -29,11 +29,11 @@
                                             <input id="addkelas" type="text" name="addkelas" class="form-control"
                                                 value="{{ $transaksi->kelas }}">
                                         </div>
-                                        <div class="col-md-5">
+                                        {{-- <div class="col-md-5">
                                             <label for="addtgl_pinjam">Tanggal Pinjam</label>
                                             <input id="addtgl_pinjam" type="text" name="addtgl_pinjam" class="form-control"
                                                 value="{{ $transaksi->tgl_pinjam }}">
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-5">
                                             <label for="addtgl_kembali">Tanggal Kembali</label>
                                             <input id="addtgl_kembali" type="text" name="addtgl_kembali" class="form-control"

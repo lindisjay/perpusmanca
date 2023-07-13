@@ -7,107 +7,94 @@
                     <h5 class="card-title fw-semibold mb-4"></h5>
                     <div class="card mb-0">
                         <div class="card-body p-4">
+                            <!--
+                            </div>-->
                             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                <h1 class="h3 mb-0 text-gray-800">Anggota</h1>
+                                <h1 class="h3 mb-0 text-gray-800">Data Pengguna</h1>
                             </div>
                             <hr>
                             <div class="card-header py-3" align="right">
-                                <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                                    data-toggle="modal" data-target="#exampleModalScrollable">
-                                    <i class="fas fa-plus fa-sm text-white-50"></i> Tambah
-                                </button>
-                            </div>
-                            <div class="card shadow mb-4">
-                                <div class="card-body">
+                                <!-- <button class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#modal-add"><i class="fa fa-plus"></i>Tambah</button> -->
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="myDataTable" width="100%" cellspacing="0">
-                                            <thead class="thead-light">
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Nama</th>
-                                                    <th>Kelas</th>
-                                                    <th>Jenis Kelamin</th>
-                                                    <th>No Hp</th>
-                                                    <th>Aksi</th>
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr align="center">
+                                                    <th width="10%">No</th>
+                                                    <th width="15%">Nama</th>
+                                                    <th width="20%">Email</th>
+                                                    <th width="10%">Roles/Akses</th>
+                                                    <th width="25%">Aksi</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                @foreach ($anggota as $agt)
-                                                    <tr>
-                                                        <td>{{ $agt->id }}</td>
-                                                        <td>{{ $agt->nama }}</td>
-                                                        <td>{{ $agt->kelas }}</td>
-                                                        <td>{{ $agt->jenis_kelamin }}</td>
-                                                        <td>{{ $agt->no_hp }}</td>
-                                                        <td align="center">
-                                                            <a
-                                                                href="{{ route('anggota.edit', [$agt->id]) }}"class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
-                                                                <i class="fas fa-edit fa-sm text-white-50"></i>
-                                                                Edit</a>
-
-                                                            <a href="/anggota/hapus/{{ $agt->id }}"
-                                                                onclick="return confirm('Yakin Ingin menghapus data?')"
-                                                                class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
-                                                                <i class="fas fa-trash-alt fa-sm text-white-50"></i>
-                                                                Hapus</a>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
+                                            <tr>
+                                                @foreach ($user as $row)
+                                                    <td>{{ $row->id }}</td>
+                                                    <td>{{ $row->name }}</td>
+                                                    <td>{{ $row->email }}</td>
+                                                    @foreach ($row->roles as $r)
+                                                        <td>{{ $r->id }}</td>
+                                                    @endforeach
+                                                    <td align="center">
+                                                        <a href="{{ route('user.edit', [$row->id]) }}"
+                                                            class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+                                                            <i class="fas fa-edit fa-sm text-white-50"></i>Edit Akses
+                                                        </a>
+                                                        <a href="/user/hapus/{{ $row->id }}"
+                                                            onclick="return confirm('Yakin Ingin menghapus data?')"
+                                                            class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+                                                            <i class="fas fa-trash-alt fa-sm text-white-50"></i> Hapus
+                                                        </a>
+                                                    </td>
+                                            </tr>
+                                            @endforeach
                                         </table>
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-scrollable" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalScrollableTitle">Tambah Anggota
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <form action="{{ action('AnggotaController@store') }}" method="POST">
-                                            @csrf
+                            <!-- modal add data-->
+                            <div class="modal inmodal fade" id="modal-add" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-xs">
+                                    <form name="frm_add" id="frm_add" class="form-horizontal" action="#"
+                                        method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Tambah Data User</h4>
+                                            </div>
                                             <div class="modal-body">
-
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlInput1">Nama</label>
-                                                    <input type="text" name="addnama" id="addnama" class="form-control"
-                                                        id="exampleFormControlInput1">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlInput1">Kelas</label>
-                                                    <input type="text" name="addkelas" id="addkelas"
-                                                        class="form-control" id="exampleFormControlInput1">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlInput1">Jenis Kelamin</label>
-                                                    <input type="text" name="addjenis_kelamin" id="addjenis_kelamin"
-                                                        class="form-control" id="exampleFormControlInput1">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlInput1">No Hp</label>
-                                                    <input type="text" name="addno_hp" id="addno_hp"
-                                                        class="form-control" id="exampleFormControlInput1">
-                                                </div>
-
+                                                <div class="form-group"><label class="col-lg-20 control-label">Nama
+                                                        User</label>
+                                                    <div class="col-lg-10"><input type="text" name="username" required
+                                                            class="form-control">
+                                                    </div>
+                                                    <div class="form-group"><label class="col-lg-20 control-label">Email
+                                                            User</label>
+                                                        <div class="col-lg-10"><input type="email" name="email" required
+                                                                class="form-control">
+                                                        </div>
+                                                        <div class="form-group"><label
+                                                                class="col-lg-20 control-label">Roles/Akses</label>
+                                                            <div class="col-lg-10">
+                                                                <select id="roles" name="roles" class="form-control"
+                                                                    required>
+                                                                    <option value="">--Pilih Roles--</option>
+                                                                    <option value="admin">Admin</option>
+                                                                    <option value="user">User</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-light"
+                                                            data-dismiss="modal">Tutup</button>
+                                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                                    </div>
+                                                @endsection
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                    Batal</button>
-                                                <input type="submit" class="btn btn-primary btn-send" value="Simpan">
-                                            </div>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
-                            </form>
                         </div>
-
-                        <!-- Pagination -->
-
-                        <!-- End Pagination -->
                     </div>
-                @endsection
+                </div>
+            </div>
+        </div>

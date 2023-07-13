@@ -88,6 +88,7 @@
                                                 @endif
                                             </div>
                                         </div>
+                                        <p class="text-center"><a href="register">Register</a></p>
                                     </form>
                                 </div>
                             </div>

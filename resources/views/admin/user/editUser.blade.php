@@ -6,50 +6,42 @@
         <fieldset>
             <div class="container-fluid">
                 <div class="container-fluid">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title fw-semibold mb-4"></h5>
-                            <div class="card">
-                                <div class="card-body p-4">
-                                    <legend>Ubah Akses User</legend>
-                                    <div class="form-group row">
-                                        <div class="col-md-2">
-                                            <label for="kode">Kode User</label>
-                                            <input class="form-control" type="text" name="kode"
-                                                value="{{ $user->id }}" readonly>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label for="user">Nama User</label>
-                                            <input id="name" type="text" name="uname" class="form-control"
-                                                value="{{ $user->name }}" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-md-5">
-                                            <label for="email">Email</label>
-                                            <input id="email" type="text" name="email" class="form-control"
-                                                value="{{ $user->email }}" readonly>
-                                        </div>
-                                        <div class="col-md-2"
-                                            @foreach ($user->roles as $role)
-                                                <label for="akses">Akses</label>
-                                                <input id="akses" type="text" name="akses" class="form-control" value="{{ $role->id }}"readonly> @endforeach
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-md-2">
-                                                <label for="akses">Ubah Akses</label>
-                                                <select id="roles" name="role" class="form-control" required>
-                                                    <option value="">--Pilih Akses--</option>
-                                                    <option value="admin">Admin</option>
-                                                    <option value="user">User</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                    <div class="card p-3">
+                        <legend>Ubah Data Anggota</legend>
+                        <fieldset>
+                            <div class="form-group row">
+                                <div class="col-md-5">
+                                    <label for="addnama">Nama Anggota</label>
+                                    <input id="addname" type="text" name="addname" class="form-control"
+                                        value="{{ $user->name }}">
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="addkelas">Kelas</label>
+                                    <input id="addkelas" type="text" name="addkelas" class="form-control"
+                                        value="{{ $user->kelas }}">
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="addjenis_kelamin">Jenis Kelamin</label>
+                                    <input id="addjenis_kelamin" type="text" name="addjenis_kelamin" class="form-control"
+                                        value="{{ $user->jenis_kelamin }}">
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="addno_hp">No Hp</label>
+                                    <input id="addno_hp" type="text" name="addno_hp" class="form-control"
+                                        value="{{ $user->no_hp }}">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-5">
+                                        <label for="akses">Ubah Akses</label>
+                                        <select id="roles" name="role" class="form-control" required>
+                                            <option value="">--Pilih Akses--</option>
+                                            <option value="admin">Admin</option>
+                                            <option value="user">User</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </fieldset>
                     </div>
                 </div>
             </div>

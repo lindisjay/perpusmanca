@@ -2,14 +2,14 @@
 @section('content')
     <div class="container">
         <div class="container-fluid">
-            <div class="card">
+            <div class="card m-4">
                 <div class="card-body">
-                    <h5 class="card-title fw-semibold mb-4"></h5>
-                    <div class="card mb-0">
+                    <h5 class="card-title fw-semibold mb-4">LAPORAN</h5>
+                    {{-- <div class="card mb-0"> --}}
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="cardheader">Laporan Transaksi</div>
+                <div class="card m-3">
+                    <div class="cardheader m-3">Laporan Transaksi</div>
                     <div class="card-body">
                         <form action="/laporan/transaksi" method="PUT" target="_blank">
                             @csrf
@@ -34,12 +34,12 @@
                 </div>
             </div>
 
-            <div class="row justify-content-center">
+        <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="cardheader">Laporan Anggota</div>
+                <div class="card m-1">
+                    <div class="cardheader m-3">Laporan Anggota</div>
                     <div class="card-body">
-                        <form action="/laporan/anggota" method="PUT" target="_blank">
+                        <form action="/laporan/user" method="PUT" target="_blank">
                             @csrf
                             <fieldset>
                                 <div class="col-md-10">
@@ -48,13 +48,15 @@
                             </fieldset>
                         </form>
                     </div>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="row justify-content-center">
+        <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="cardheader">Laporan Buku</div>
+                <div class="card m-3">
+                    <div class="cardheader m-3">Laporan Buku</div>
                     <div class="card-body">
                         <form action="/laporan/buku" method="PUT" target="_blank">
                             @csrf
@@ -65,9 +67,9 @@
                             </fieldset>
                         </form>
                     </div>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection
