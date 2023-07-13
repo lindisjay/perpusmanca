@@ -188,7 +188,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($transaksi->where('id', auth()->id())->where('role', 'user') as $trs)
+                                            @foreach ($transaksi->where('id', auth()->id()) as $trs)
                                                 <tr>
                                                     <td>{{ $trs->id }}</td>
                                                     <td>{{ $trs->nama }}</td>
