@@ -34,10 +34,10 @@
         </thead>
         <tbody>
             @php $i=1 @endphp
-            @foreach ($user as $user)
+            @foreach ($users as $user)
                 <tr align="center">
                     <td>{{ $i++ }}</td>
-                    <td>{{ $user->nama }}</td>
+                    <td>{{ $user->name }}</td>
                     <td>{{ $user->kelas }}</td>
                     <td>{{ $user->jenis_kelamin }}</td>
                     <td>{{ $user->no_hp }}</td>
