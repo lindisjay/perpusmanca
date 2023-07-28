@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="container-fluid">
-            <div class="card">
+            <div class="card m-4">
                 <div class="card-body">
                     <h5 class="card-title fw-semibold mb-4"></h5>
                     <div class="card mb-0">
@@ -30,8 +30,8 @@
                                         </div>
                                         <div class="col-md-5">
                                             <label for="addpenerbit">Penerbit</label>
-                                            <input id="addaddpenerbit" type="text" name="addpenerbit" class="form-control"
-                                                value="{{ $buku->penerbit }}">
+                                            <input id="addaddpenerbit" type="text" name="addpenerbit"
+                                                class="form-control" value="{{ $buku->penerbit }}">
                                         </div>
                                         <div class="col-md-5">
                                             <label for="addkategori">Kategori</label>
@@ -51,13 +51,15 @@
                                     </div>
                                 </fieldset>
 
-                                    <div class="card-body p-4">
+                                <div class="container-fluid">
+                                    <div class="card-body m-0 p-0">
                                         <div class="col-md-10">
+                                            <hr>
                                             <input type="submit" class="btn btn-success btn-send" value="Update">
                                             <a href="{{ route('buku.index') }}"><input type="Button"
                                                     class="btn btn-primary btn-send" value="Kembali"></a>
                                         </div>
-                                        <hr>
+
+                                    </div>
                             </form>
                         @endsection
-

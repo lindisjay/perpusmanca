@@ -12,7 +12,12 @@ class Transaksi extends Model
     protected $keyType = 'integer';
     public $timestamps = false;
     protected $table = "peminjaman";
-    protected $fillable=['id' ,'tgl_pinjam', 'tgl_kembali', 'kd_buku', 'judul_buku', 'qty_pinjam', 'nama','kelas', 'status'];
+    protected $fillable=['id', 'tgl_kembali', 'kd_buku', 'judul_buku', 'qty_pinjam', 'name','kelas', 'status', 'created_at', 'updated_at' ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     public function buku()
     {

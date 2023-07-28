@@ -2,7 +2,7 @@
 @section('content')
     @role('admin')
         <div class="container-fluid">
-            <div class="card">
+            <div class="card m-4">
                 <div class="card-body">
                     <h5 class="card-title fw-semibold mb-4"></h5>
                     <div class="card mb-0">
@@ -37,10 +37,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @php
+                                                    $i=1
+                                                @endphp
                                                 @foreach ($transaksi as $trs)
                                                     <tr>
-                                                        <td>{{ $trs->id }}</td>
-                                                        <td>{{ $trs->nama }}</td>
+                                                        <td>{{ $i++ }}</td>
+                                                        <td>{{ $trs->name }}</td>
                                                         <td>{{ $trs->kelas }}</td>
                                                         <td>{{ \Carbon\Carbon::parse($trs->created_at)->format('Y-m-d') }}</td>
                                                         <td>{{ $trs->tgl_kembali }}</td>
@@ -82,8 +85,8 @@
                                             <div class="modal-body">
 
                                                 <div class="form-group">
-                                                    <label for="addnama">Nama</label>
-                                                    <input type="text" name="addnama" id="addnama" class="form-control">
+                                                    <label for="addname">Nama</label>
+                                                    <input type="text" name="addname" id="addname" class="form-control">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="addkelas">Kelas</label>
@@ -188,10 +191,11 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($transaksi->where('id', auth()->id())->where('role', 'user') as $trs)
+                                            @php $i=1 @endphp
+                                            @foreach ($transaksi->where('user_id', auth()->id()) as $trs)
                                                 <tr>
-                                                    <td>{{ $trs->id }}</td>
-                                                    <td>{{ $trs->nama }}</td>
+                                                    <td>{{ $i++ }}</td>
+                                                    <td>{{ $trs->name }}</td>
                                                     <td>{{ $trs->kelas }}</td>
                                                     <td>{{ \Carbon\Carbon::parse($trs->created_at)->format('Y-m-d') }}</td>
                                                     <td>{{ $trs->tgl_kembali }}</td>
@@ -222,15 +226,14 @@
                                         <div class="modal-body">
 
                                             <div class="form-group">
-                                                <label for="addnama">Nama</label>
-                                                <input type="text" name="addnama" id="addnama" class="form-control"
+                                                <label for="addname">Nama</label>
+                                                <input type="text" name="addname" id="addname" class="form-control"
                                                     value="{{ Auth::user()->name }}" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label for="addkelas">Kelas</label>
                                                 <input type="text" name="addkelas" id="addkelas"
-                                                    class="form-control" value="{{ Auth::user()->kelas }}"
-                                                    readonly>
+                                                    class="form-control" value="{{ Auth::user()->kelas }}" readonly>
                                             </div>
 
                                             {{-- <div class="form-group">

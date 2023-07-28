@@ -6,7 +6,7 @@
         <fieldset>
             <div class="container-fluid">
                 <div class="container-fluid">
-                    <div class="card p-3">
+                    <div class="card p-3 m-4">
                         <legend>Ubah Data Anggota</legend>
                         <fieldset>
                             <div class="form-group row">
@@ -47,15 +47,19 @@
             </div>
         </fieldset>
 
-        <div class="card mb-1">
-            <div class="card-body p-4">
-                <div class="col-md-10">
-                    <input type="submit" class="btn btn-success btn-send" value="Ubah Akses">
-                    <a href="{{ route('user.index') }}"><input type="Button" class="btn btn-primary btn-send"
-                            value="Kembali"></a>
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <hr class="p-0">
+                <div class="card p-0 m-4">
+                    <div class="card-body p-4">
+                        <div class="col-md-10">
+                            <input type="submit" class="btn btn-success btn-send" value="Ubah Akses">
+                            <a href="{{ route('user.index') }}"><input type="Button" class="btn btn-primary btn-send"
+                                    value="Kembali"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
     </form>
 @endsection

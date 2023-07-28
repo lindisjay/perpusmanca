@@ -17,7 +17,7 @@
     <table class="table table-bordered" width="100%" align="center">
         <tr align="center">
             <td>
-                <h3>Laporan Data Buku<br>Perpusline SMANCA</h3>
+                <h4>Laporan Data Buku<br>Perpusline SMANCA</h4>
                 <hr>
             </td>
         </tr>
@@ -51,7 +51,9 @@
     </table>
     <div align="right">
         <h6>Tanda Tangan</h6><br>
-        <h6>{{ Auth::user()->name }}</h6>
+        @auth
+            <h6>{{ Auth::user()->name }}</h6>
+        @endauth
     </div>
 </body>
 

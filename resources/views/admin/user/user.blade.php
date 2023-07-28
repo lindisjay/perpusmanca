@@ -2,21 +2,21 @@
 @section('content')
     <div class="container-fluid">
         <div class="container-fluid">
-            <div class="card">
+            <div class="card m-4">
                 <div class="card-body">
                     <h5 class="card-title fw-semibold mb-4"></h5>
                     <div class="card mb-0">
                         <div class="card-body p-4">
                             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                <h1 class="h3 mb-0 text-gray-800">Anggota</h1>
+                                <h1 class="h3 mb-0 text-gray-800">User / Anggota</h1>
                             </div>
                             <hr>
-                            <div class="card-header py-3" align="right">
+                            {{-- <div class="card-header py-3" align="right">
                                 <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                                     data-toggle="modal" data-target="#exampleModalScrollable">
                                     <i class="fas fa-plus fa-sm text-white-50"></i> Tambah
                                 </button>
-                            </div>
+                            </div> --}}
                             <div class="card shadow mb-4">
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -34,13 +34,24 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @php
+                                                    $i = 1;
+                                                @endphp
                                                 @foreach ($user as $agt)
                                                     <tr>
-                                                        <td>{{ $agt->id }}</td>
+                                                        <td>{{ $i++ }}</td>
                                                         <td>{{ $agt->name }}</td>
                                                         <td>{{ $agt->kelas }}</td>
                                                         <td>{{ $agt->email }}</td>
-                                                        <td>{{ $agt->roles_id }}</td>
+                                                        <td>
+                                                            @foreach ($agt->getRoleNames() as $role)
+                                                                @if ($role === 'admin')
+                                                                    1
+                                                                @elseif($role === 'user')
+                                                                    2
+                                                                @endif
+                                                            @endforeach
+                                                        </td>
                                                         <td>{{ $agt->jenis_kelamin }}</td>
                                                         <td>{{ $agt->no_hp }}</td>
                                                         <td align="center">

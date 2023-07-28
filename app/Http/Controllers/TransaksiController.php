@@ -48,8 +48,14 @@ class TransaksiController extends Controller
         ]);
 
         $tambah_transaksi = new Transaksi();
-        $tambah_transaksi->id=$request->input('addid');
-        $tambah_transaksi->nama=$request->input('addnama');
+
+        if (Auth::user()->hasRole('admin')) {
+            $tambah_transaksi->user_id = auth()->id();
+        } else {
+            $tambah_transaksi->user_id = Auth::user()->id;
+        }
+
+        $tambah_transaksi->name=$request->input('addname');
         $tambah_transaksi->kelas=$request->input('addkelas');
         $tambah_transaksi->created_at = $request->input('addcreated_at');
         $tambah_transaksi->tgl_kembali = $request->input('addtgl_kembali');
@@ -104,7 +110,7 @@ class TransaksiController extends Controller
 
         $transaksi = Transaksi::find($id);
         $transaksi->id=$request->get('addid');
-        $transaksi->nama = $request ->get ('addnama');
+        $transaksi->name = $request ->get ('addname');
         $transaksi->kelas = $request ->get ('addkelas');
         $transaksi->created_at = $request ->get ('addcreated_at');
         $transaksi->tgl_kembali = $request ->get ('addtgl_kembali');

@@ -17,7 +17,7 @@
     <table class="table table-bordered" width="100%" align="center">
         <tr align="center">
             <td>
-                <h3>Laporan Data Anggota<br>Perpusline SMANCA</h3>
+                <h4>Laporan Data Anggota<br>Perpusline SMANCA</h4>
                 <hr>
             </td>
         </tr>
@@ -34,10 +34,10 @@
         </thead>
         <tbody>
             @php $i=1 @endphp
-            @foreach ($user as $user)
+            @foreach ($users as $user)
                 <tr align="center">
                     <td>{{ $i++ }}</td>
-                    <td>{{ $user->nama }}</td>
+                    <td>{{ $user->name }}</td>
                     <td>{{ $user->kelas }}</td>
                     <td>{{ $user->jenis_kelamin }}</td>
                     <td>{{ $user->no_hp }}</td>
@@ -47,7 +47,9 @@
     </table>
     <div align="right">
         <h6>Tanda Tangan</h6><br>
-        <h6>{{ Auth::user()->name }}</h6>
+        @auth
+            <h6>{{ Auth::user()->name }}</h6>
+        @endauth
     </div>
 
 </body>

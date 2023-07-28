@@ -18,7 +18,7 @@
     <table class="table table-bordered" width="100%" align="center">
         <tr align="center">
             <td>
-                <h3>Laporan Transaksi<br>Perpusline SMANCA</h3>
+                <h4>Laporan Transaksi<br>Perpusline SMANCA</h4>
                 <hr>
             </td>
         </tr>
@@ -27,6 +27,8 @@
         <thead>
             <tr>
                 <th width="5%">No</th>
+                <th width="5%">Nama</th>
+                <th width="5%">Kelas</th>
                 <th width="5%">Tanggal Pinjam</th>
                 <th width="5%">Tanggal Kembali</th>
                 <th width="5%">Kode Buku</th>
@@ -39,7 +41,9 @@
             @foreach ($transaksi as $trs)
                 <tr align="center">
                     <td>{{ $i++ }}</td>
-                    <td>{{ $trs->tgl_pinjam }}</td>
+                    <td>{{ $trs->name }}</td>
+                    <td>{{ $trs->kelas }}</td>
+                    <td>{{ \Carbon\Carbon::parse($trs->created_at)->format('d-m-Y') }}</td>
                     <td>{{ $trs->tgl_kembali }}</td>
                     <td>{{ $trs->kd_buku }}</td>
                     <td>{{ $trs->judul_buku }}</td>
@@ -50,7 +54,9 @@
     </table>
     <div align="right">
         <h6>Tanda Tangan</h6><br>
-        <h6>{{ Auth::user()->name }}</h6>
+        @auth
+            <h6>{{ Auth::user()->name }}</h6>
+        @endauth
     </div>
 </body>
 

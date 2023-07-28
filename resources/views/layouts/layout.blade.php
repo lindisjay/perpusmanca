@@ -60,19 +60,19 @@
 
                                 <a class="sidebar-link" href="{{ route('user.index') }}" aria-expanded="false">
                                     <span>
-                                        <i class="ti ti-user fs-6"></i>
+                                        <i class="ti ti-users"></i>
                                     </span>
                                     <span class="hide-menu">User</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item">
+                            {{-- <li class="sidebar-item">
                                 <a class="sidebar-link" href="#" aria-expanded="false">
                                     <span>
                                         <i class="ti ti-users"></i>
                                     </span>
                                     <span class="hide-menu">anggota</span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="sidebar-item">
                                 <a class="sidebar-link" href="{{ route('buku.index') }}" aria-expanded="false">
                                     <span>

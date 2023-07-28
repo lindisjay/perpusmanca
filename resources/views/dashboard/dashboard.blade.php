@@ -75,14 +75,14 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Selamat Datang, <span
+                        <h1 class="h3 mb-0 text-gray-800 m-3" style="font-family: poppins">Selamat Datang, <span
                                 class="text-black fw-bold">{{ Auth::user()->name }}! </span></h1>
 
                     </div>
 
 
                     <!-- Content Row -->
-                    <div class="row">
+                    <div class="row m-3">
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -119,7 +119,7 @@
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                            <i class="fas fa-book fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -149,7 +149,7 @@
 
 
                     <div class="container-fluid">
-                        <div class="card">
+                        <div class="card m-3">
                             <div class="card-body">
                                 <h5 class="card-title fw-semibold mb-4">Ajukan Peminjaman</h5>
                                 <div class="card">

@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 Use Spatie\Permission\Traits\HasRoles;
-use App\Anggota;
+use App\User;
 
 class User extends Authenticatable
 {
@@ -18,8 +18,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $guarded = [
-        'id' 
+    protected $fillable = [
+        'name', 'email', 'password', 'kelas', 'roles_id'
     ];
 
     /**
@@ -47,10 +47,11 @@ class User extends Authenticatable
         static::creating(function ($model) {
             $model->id = static::max('id') + 1;
         });
-
-        static::deleting(function ($user) {
-            // Hapus data anggota terkait
-            Anggota::where('nama', $user->name)->delete();
-        });
     }
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'user_id');
+    }
+
 }

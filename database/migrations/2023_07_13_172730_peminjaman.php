@@ -16,7 +16,7 @@ class Peminjaman extends Migration
         Schema::create('peminjaman', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('user_id')->unsigned();
-            $table->string('nama');
+            $table->string('name');
             $table->string('kelas');
             $table->date('tgl_kembali');
             $table->string('kd_buku', 10);
