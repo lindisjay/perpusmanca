@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Transaksi;
-use User;
-use Buku;
+use App\Transaksi;
+use App\User;
+use App\Buku;
 use PDF;
 use DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\TransaksiExport;
+use App\UsersExport;
+use App\BukuExport;
 
 class LaporanController extends Controller
 {
@@ -52,29 +56,46 @@ class LaporanController extends Controller
     {
         $tglawal = $request->get('tglawal');
         $tglakhir = $request->get('tglakhir');
+        $format = $request->get('cetak'); // Menambahkan pemilihan format cetak
 
         if ($request->laporan == 'transaksi') {
+            // Mengubah tanggal akhir untuk mencakup tanggal 30 dan 31
+            $tglakhir = date('Y-m-d', strtotime($tglakhir . ' +2 days'));
+
             $trs = DB::table('peminjaman')
                 ->whereBetween('created_at', [$tglawal, $tglakhir])
                 ->orderBy('created_at', 'ASC')
                 ->get();
 
-            $pdf = PDF::loadView('admin.laporan.peminjaman_pdf', ['transaksi' => $trs])->setPaper('A4', 'landscape');
-            return $pdf->stream();
+            if ($format == 'pdf') {
+                $pdf = PDF::loadView('admin.laporan.peminjaman_pdf', ['transaksi' => $trs])->setPaper('A4', 'landscape');
+                return $pdf->stream();
+            } elseif ($format == 'excel') {
+                return Excel::download(new TransaksiExport($tglawal, $tglakhir), 'laporan_transaksi.xlsx');
+            }
 
         } elseif ($request->laporan == 'user') {
             $users = DB::table('users')
-                ->get();
+                -> select('id', 'name', 'kelas', 'jenis_kelamin', 'no_hp')
+                -> get();
 
-            $pdf = PDF::loadView('admin.laporan.anggotapdf', ['users' => $users])->setPaper('A4', 'landscape');
-            return $pdf->stream();
+            if ($format == 'pdf') {
+                $pdf = PDF::loadView('admin.laporan.anggotapdf', ['users' => $users])->setPaper('A4', 'landscape');
+                return $pdf->stream();
+            } elseif ($format == 'excel') {
+                return Excel::download(new UsersExport($users), 'laporan_anggota.xlsx');
+            }
 
         } elseif ($request->laporan == 'buku') {
             $buku = DB::table('buku')
-                ->get();
+                -> get();
 
-            $pdf = PDF::loadView('admin.laporan.bukupdf', ['buku' => $buku])->setPaper('A4', 'landscape');
-            return $pdf->stream();
+            if ($format == 'pdf') {
+                $pdf = PDF::loadView('admin.laporan.bukupdf', ['buku' => $buku])->setPaper('A4', 'landscape');
+                return $pdf->stream();
+            } elseif ($format == 'excel') {
+                return Excel::download(new BukuExport(), 'laporan_buku.xlsx');
+            }
         } else {
             // Tindakan yang akan diambil jika jenis tidak valid
             return redirect()->back()->with('error', 'Jenis laporan tidak valid.');

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BukuController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,23 +23,32 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // User
-Route:: resource('/user','userController' );
+Route:: resource('/user','userController' )->middleware('auth');
 Route:: get('/user/hapus/{id}' , 'userController@destroy' );
 
 //Buku
-Route::resource('/buku','BukuController'); //Create + Read
+Route::resource('/buku','BukuController')->middleware('auth');
+Route::get('/buku/search', 'BukuController@search')->name('buku.search');
 Route::get('/buku/hapus/{kd_buku}','BukuController@destroy'); //Delete
+Route::post('/upload-image', 'BukuController@upload')->name('upload.image');
+
+//Katalog
+Route::resource('/katalog','KatalogController')->middleware('auth');
 
  //Anggota
 // Route::resource('/user','AnggotaController');
 // Route::get('/user/hapus/{id}','AnggotaController@destroy');
 
 //Peminjaman
-Route::resource('/transaksi','TransaksiController');
+Route::resource('/transaksi','TransaksiController')->middleware('auth');
 Route::get('/transaksi/hapus/{id}','TransaksiController@destroy');
 
 // Laporan
-Route:: resource('/laporan','LaporanController');
+Route:: resource('/laporan','LaporanController')->middleware('auth');
+Route::put('/laporan/cetak', 'LaporanController@show');
+Route::post('/export/transaksi', 'LaporanController@exportExcel');
+Route::post('/export/user', 'LaporanController@exportExcel');
+Route::post('/export/buku', 'LaporanController@exportExcel');
 
 Route::get('/logout', function(){
     return view('auth/login');
@@ -46,6 +57,13 @@ Route::get('/logout', function(){
 // Register
 // Route::resource('register', 'Auth\RegisterController');
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+
+// Katalog
+// Route::get('/katalog', 'KatalogController@index')->name('katalog.index');
+// Route::post('/katalog/store', 'KatalogController@store')->name('katalog.store');
+
+
+
 
 
 

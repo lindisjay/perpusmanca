@@ -58,13 +58,13 @@
                                                             <a
                                                                 href="{{ route('user.edit', [$agt->id]) }}"class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
                                                                 <i class="fas fa-edit fa-sm text-white-50"></i>
-                                                                Edit</a>
+                                                                </a>
 
                                                             <a href="/user/hapus/{{ $agt->id }}"
                                                                 onclick="return confirm('Yakin Ingin menghapus data?')"
                                                                 class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
                                                                 <i class="fas fa-trash-alt fa-sm text-white-50"></i>
-                                                                Hapus</a>
+                                                                </a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

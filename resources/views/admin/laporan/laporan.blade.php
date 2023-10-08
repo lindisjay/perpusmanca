@@ -6,7 +6,7 @@
                 <div class="card-body">
                     <h5 class="card-title fw-semibold mb-4">LAPORAN</h5>
                     {{-- <div class="card mb-0"> --}}
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-3">
             <div class="col-md-12">
                 <div class="card m-3">
                     <div class="cardheader m-3">Laporan Transaksi</div>
@@ -16,25 +16,26 @@
                             <fieldset>
                                 <div class="form-group row">
                                     <div class="col-md-3">
-                                        <label for="no_hp">Tanggal Awal</label>
+                                        <label for="tglawal">Tanggal Awal</label>
                                         <input id="tglawal" type="date" name="tglawal" class="form-control">
                                     </div>
                                     <div class="col-md-3">
-                                        <label for="no_hp">Tanggal Akhir</label>
+                                        <label for="tglakhir">Tanggal Akhir</label>
                                         <input id="tglakhir" type="date" name="tglakhir" class="form-control">
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="col-md-10">
-                                    <input type="submit" class="btn btn-success btnsend" value="Cetak">
+                                    <button type="submit" class="btn btn-success btnsend" name="cetak" value="pdf">Cetak PDF</button>
+                                    <button type="submit" class="btn btn-success btnsend" name="cetak" value="excel">Cetak Excel</button>
                                 </div>
                             </fieldset>
                         </form>
                     </div>
                 </div>
-            </div>
+            </div><br>
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-5">
             <div class="col-md-12">
                 <div class="card m-1">
                     <div class="cardheader m-3">Laporan Anggota</div>
@@ -43,7 +44,8 @@
                             @csrf
                             <fieldset>
                                 <div class="col-md-10">
-                                    <input type="submit" class="btn btn-success btnsend" value="Cetak">
+                                    <button type="submit" class="btn btn-success btnsend" name="cetak" value="pdf">Cetak PDF</button>
+                                    <button type="submit" class="btn btn-success btnsend" name="cetak" value="excel">Cetak Excel</button>
                                 </div>
                             </fieldset>
                         </form>
@@ -53,7 +55,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-3">
             <div class="col-md-12">
                 <div class="card m-3">
                     <div class="cardheader m-3">Laporan Buku</div>
@@ -62,7 +64,8 @@
                             @csrf
                             <fieldset>
                                 <div class="col-md-10">
-                                    <input type="submit" class="btn btn-success btnsend" value="Cetak">
+                                    <button type="submit" class="btn btn-success btnsend" name="cetak" value="pdf">Cetak PDF</button>
+                                    <button type="submit" class="btn btn-success btnsend" name="cetak" value="excel">Cetak Excel</button>
                                 </div>
                             </fieldset>
                         </form>

@@ -26,6 +26,6 @@ class UserSeeder extends Seeder
             'password'=>bcrypt('password'),
             'roles_id'=>2
             ]);
-        $admin->assignRole('user');
+        $user->assignRole('user');
     }
 }

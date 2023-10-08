@@ -64,6 +64,12 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'image_disk' => [
+            'driver' => 'local',
+            'root' => public_path('storage/img/img'), // Lokasi penyimpanan gambar di direktori 'public/storage/img/img'
+            'url' => env('APP_URL').'/storage/img/img', // URL akses ke gambar
+            'visibility' => 'public',
+        ],
     ],
 
     /*

@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Perpusline SMANCA</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('asset/modernise/images/logos/Smanca_logo.png') }}" />
+
+     <!--Data Table css-->
+     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <!-- End Data Table css-->
+
     <link rel="stylesheet" href="{{ asset('asset/modernise/css/styles.min.css') }}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 
@@ -14,9 +20,7 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!--Data Table css-->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-    <!-- End Data Table css-->
+
 </head>
 
 <body>
@@ -36,6 +40,7 @@
                     </div>
                 </div>
                 <!-- Sidebar navigation-->
+                @role('admin')
                 <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">
@@ -51,7 +56,6 @@
                             </a>
                         </li>
                         <li class="nav-small-cap">
-                            @role('admin')
                                 <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                                 <span class="hide-menu">MASTER DATA</span>
                             </li>
@@ -111,7 +115,100 @@
                                         <span class="hide-menu">Register</span>
                                     </a>
                                 </li> -->
-                        @endrole
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href=""
+                                onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                                data-toggle="modal" data-target="" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-logout"></i>
+                                </span>
+                                <span class="hide-menu">Logout</span>
+                            </a>
+                        </li>
+
+                        <!-- <li class="sidebar-item">
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                        </li> -->
+
+                        <!-- Logout Modal-->
+
+                        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Yakin ingin keluar aplikasi ?
+                                        </h5>
+                                        <button class="close" type="button" data-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <!-- <div class="modal-body">Pilih "Logout" apabila ingin keluar aplikasi</div> -->
+                                    <div class="modal-footer">
+                                        <a class="btn btn-primary" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
+                                            @csrf
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </nav>
+                @endrole
+
+                <nav class="sidebar-nav scroll-sidebar" data-simplebar="" @role('admin') style="display: none;"@endrole>
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Home</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout-dashboard"></i>
+                                </span>
+                                <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                                <span class="hide-menu">MASTER DATA</span>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('katalog.index') }}" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-books"></i>
+                                    </span>
+                                    <span class="hide-menu">Katalog Buku</span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('transaksi.index') }}" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-checklist"></i>
+                                    </span>
+                                    <span class="hide-menu">Riwayat Transaksi</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-small-cap">
+                                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                                <span class="hide-menu">AUTH</span>
+                            </li>
+
                         <li class="sidebar-item">
                             <a class="sidebar-link" href=""
                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();"
@@ -180,6 +277,7 @@
                     @yield('content')
                 </div>
             </div>
+
             <script src="{{ asset('asset/modernise/libs/jquery/dist/jquery.min.js') }}"></script>
             <script src="{{ asset('asset/modernise/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
             <script src="{{ asset('asset/modernise/js/sidebarmenu.js') }}"></script>

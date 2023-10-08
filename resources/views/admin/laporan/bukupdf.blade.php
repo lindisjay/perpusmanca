@@ -25,13 +25,15 @@
     <table class="table table-bordered" width="100%" align="center">
         <thead>
             <tr>
-                <th width="3%">No</th>
+                <th width="2%">No</th>
                 <th width="5%">Kode Buku</th>
-                <th width="15%">Judul</th>
+                <th width="3%">Tahun Masuk</th>
+                <th width="7%">Judul</th>
                 <th width="5%">Penulis</th>
                 <th width="5%">Penerbit</th>
                 <th width="5%">Kategori</th>
-                <th width="5%">Jumlah</th>
+                <th width="4%">Jumlah</th>
+                <th width="5%">Harga/satuan</th>
             </tr>
         </thead>
         <tbody>
@@ -40,11 +42,13 @@
                 <tr align="center">
                     <td>{{ $i++ }}</td>
                     <td>{{ $bku->kd_buku }}</td>
+                    <td>{{ $bku->thn_masuk }}</td>
                     <td>{{ $bku->judul }}</td>
                     <td>{{ $bku->penulis }}</td>
                     <td>{{ $bku->penerbit }}</td>
                     <td>{{ $bku->kategori }}</td>
                     <td>{{ $bku->stok }}</td>
+                    <td>{{ $bku->harga }}</td>
                 </tr>
             @endforeach
         </tbody>

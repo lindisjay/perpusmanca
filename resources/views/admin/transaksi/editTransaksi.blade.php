@@ -21,13 +21,13 @@
                                         <div class="col-md-5">
                                             <label for="addname" class="m-1">Nama</label>
                                             <input class="form-control" type="text" name="addname"
-                                                value="{{ $transaksi->name }}" >
+                                                value="{{ $transaksi->name }}" readonly>
                                         </div>
                                         <div class="col-md-5">
                                             @role('admin')
                                             <label for="addkelas" class="m-1">Kelas</label>
                                             <input id="addkelas" type="text" name="addkelas" class="form-control"
-                                                value="{{ $transaksi->kelas }}">
+                                                value="{{ $transaksi->kelas }}" readonly>
                                         </div>
                                         {{-- <div class="col-md-5">
                                             <label for="addtgl_pinjam">Tanggal Pinjam</label>
@@ -37,22 +37,22 @@
                                         <div class="col-md-5">
                                             <label for="addtgl_kembali" class="m-1">Tanggal Kembali</label>
                                             <input id="addtgl_kembali" type="text" name="addtgl_kembali" class="form-control"
-                                                value="{{ $transaksi->tgl_kembali }}">
+                                                value="{{ $transaksi->tgl_kembali }}" readonly>
                                         </div>
                                         <div class="col-md-5">
                                             <label for="addkd_buku" class="m-1">Kode Buku</label>
                                             <input id="addkd_buku" type="text" name="addkd_buku" class="form-control"
-                                                value="{{ $transaksi->kd_buku }}">
+                                                value="{{ $transaksi->kd_buku }}" readonly>
                                         </div>
                                         <div class="col-md-5">
                                             <label for="addjudul_buku" class="m-1">Judul</label>
                                             <input id="addjudul_buku" type="text" name="addjudul_buku" class="form-control"
-                                                value="{{ $transaksi->judul_buku }}">
+                                                value="{{ $transaksi->judul_buku }}" readonly>
                                         </div>
                                         <div class="col-md-5">
                                             <label for="addqty_pinjam" class="m-1">QTY</label>
                                             <input id="addqty_pinjam" type="number" name="addqty_pinjam" class="form-control"
-                                                value="{{ $transaksi->qty_pinjam }}">
+                                                value="{{ $transaksi->qty_pinjam }}" readonly>
                                         </div>
                                         <div class="form-group col-md-5">
                                             <label for="status" class="m-1">Status</label>

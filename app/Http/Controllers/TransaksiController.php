@@ -45,7 +45,16 @@ class TransaksiController extends Controller
     {
         $validatedData = $request->validate([
             'status' => 'required|in:dipinjam,kembali',
+            'addqty_pinjam' => 'required|integer|min:1', // Jumlah harus lebih dari atau sama dengan 1
+            'addkd_buku' => 'required',
         ]);
+
+        // Cari stok buku
+        $buku = Buku::find($request->addkd_buku);
+        if (!$buku || $request->addqty_pinjam > $buku->stok) {
+            // Stok buku tidak mencukupi, kembalikan pesan kesalahan
+            return redirect()->back()->with('error', 'Stok buku tidak mencukupi.');
+        }
 
         $tambah_transaksi = new Transaksi();
 
@@ -135,4 +144,5 @@ class TransaksiController extends Controller
         Alert::success('Pesan ', 'Data berhasil dihapus');
         return redirect()->route('transaksi.index');
     }
+
 }

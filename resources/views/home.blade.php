@@ -143,41 +143,10 @@
                     </div>
                 </div>
 
-                <!-- Content Row -->
-
-
-
-                    <!-- Pie Chart -->
-
-                            <!-- Card Body -->
-
-
-
-                <!-- Content Row -->
-                <div class="row">
-
-                    <!-- Content Column -->
-                    <div class="col-lg-6 mb-4">
-
-                        <!-- Project Card Example -->
-
-
-                        <!-- Color System -->
-
-
-                        <!-- Illustrations -->
-
-
-                        <!-- Approach -->
-
-                    </div>
-                </div>
 
             </div>
-            <!-- /.container-fluid -->
-
+        
         </div>
-        <!-- End of Main Content -->
 
 
         <!-- Footer -->

@@ -26,14 +26,14 @@
     <table class="table table-bordered" width="100%" align="center">
         <thead>
             <tr>
-                <th width="5%">No</th>
-                <th width="5%">Nama</th>
+                <th width="2%">No</th>
+                <th width="7%">Nama</th>
                 <th width="5%">Kelas</th>
                 <th width="5%">Tanggal Pinjam</th>
                 <th width="5%">Tanggal Kembali</th>
                 <th width="5%">Kode Buku</th>
-                <th width="15%">Judul</th>
-                <th width="5%">Qty</th>
+                <th width="7%">Judul</th>
+                <th width="2%">Qty</th>
             </tr>
         </thead>
         <tbody>

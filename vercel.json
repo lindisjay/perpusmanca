@@ -1,0 +1,23 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "public/**/*",
+        "use": "@vercel/php",
+        "config": { "maxLambdaSize": "50mb" }
+      }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "/public/index.php" }
+    ],
+    "env": {
+      "APP_KEY": "base64:3cpEESvLb6m7FRNZ3xU0E8JGaS2ZxnZX35Dz4GnBehs=",
+      "APP_DEBUG": "false",
+      "DB_CONNECTION": "mysql",
+      "DB_HOST": "127.0.0.1",
+      "DB_PORT": "3306",
+      "DB_DATABASE": "perpusmanca",
+      "DB_USERNAME": "root",
+      "DB_PASSWORD": ""
+    }
+  }

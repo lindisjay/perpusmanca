@@ -11,5 +11,5 @@ class Buku extends Model
     protected $keyType = 'string';
     public $timestamps = false;
     protected $table = "buku";
-    protected $fillable=['kd_buku','judul', 'penulis', 'penerbit', 'kategori', 'rak', 'stok'];
+    protected $fillable=['kd_buku', 'thn_masuk', 'image', 'judul', 'penulis', 'penerbit', 'kategori', 'rak', 'stok', 'harga', 'image'];
 }

@@ -18,7 +18,7 @@
     <link href="{{ asset('asset/css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
 
-<body class="bg-gradient-dark">
+<body class="bg-gradient-light">
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
@@ -61,6 +61,44 @@
                                                     name="email" value="{{ old('email') }}" required
                                                     autocomplete="email">
                                                 @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="kelas" class="col-md-4 col-form-label text-md-right">{{ __('Kelas') }}</label>
+                                            <div class="col-md-6">
+                                                <input id="kelas" type="text" class="form-control @error('kelas') is-invalid @enderror" name="kelas" value="{{ old('kelas') }}" required>
+                                                @error('kelas')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="no_hp" class="col-md-4 col-form-label text-md-right">{{ __('Nomor HP') }}</label>
+                                            <div class="col-md-6">
+                                                <input id="no_hp" type="text" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp" value="{{ old('no_hp') }}" required>
+                                                @error('no_hp')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="jenis_kelamin" class="col-md-4 col-form-label text-md-right">{{ __('Jenis Kelamin') }}</label>
+                                            <div class="col-md-6">
+                                                <select id="jenis_kelamin" class="form-control @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin" required>
+                                                    <option value="" disabled selected>-Jenis Kelamin-</option>
+                                                    <option value="Laki-laki">Laki-laki</option>
+                                                    <option value="Perempuan">Perempuan</option>
+                                                </select>
+                                                @error('jenis_kelamin')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
