@@ -58,13 +58,16 @@ class BukuController extends Controller
         $data = [
             'kd_buku' => $request->input('addkd_buku'),
             // 'image' => $request->input('addimage'),
+            'no_induk' => $request->input('addno_induk'),
+            'tgl_dtg' =>$request->input('addtgl_dtg'),
             'thn_masuk' => $request->input('addthn_masuk'),
             'judul' => $request->input('addjudul'),
             'penulis' => $request->input('addpenulis'),
             'penerbit' => $request->input('addpenerbit'),
             'kategori' => $request->input('addkategori'),
-            'rak' => $request->input('addrak'),
+            'sumber' => $request->input('addsumber'),
             'stok' => $request->input('addstok'),
+            'qty_bku_dtg' => $request->input('addqty_bku_dtg'),
             'harga' => $request->input('addharga'),
         ];
 
@@ -122,13 +125,16 @@ class BukuController extends Controller
 
         // Mengisi atribut model dengan data dari request
         $buku->kd_buku = $request->get('addkd_buku');
+        $buku->no_induk = $request->get('addno_induk');
+        $buku->tgl_dtg = $request->get('addtgl_dtg');
         $buku->thn_masuk = $request->get('addthn_masuk');
         $buku->judul = $request->get('addjudul');
         $buku->penulis = $request->get('addpenulis');
         $buku->penerbit = $request->get('addpenerbit');
         $buku->kategori = $request->get('addkategori');
-        $buku->rak = $request->get('addrak');
+        $buku->sumber = $request->get('addsumber');
         $buku->stok = $request->get('addstok');
+        $buku->qty_bku_dtg = $request->get('addqty_bku_dtg');
         $buku->harga = $request->get('addharga');
 
         if ($request->hasFile('addimage')) {

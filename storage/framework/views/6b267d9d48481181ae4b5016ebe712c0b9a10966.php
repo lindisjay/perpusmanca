@@ -25,15 +25,18 @@
                                             <table class="table table-bordered table-striped" id="myDataTable">
                                                 <thead class="thead-light">
                                                     <tr>
-                                                        <th>Tahun Masuk</th>
+                                                        <th>No. Induk</th>
+                                                        <th>Tanggal Datang</th>
+                                                        <th>Tahun Terbit</th>
                                                         <th>Sampul</th>
                                                         <th>Kode Buku</th>
                                                         <th>Judul</th>
                                                         <th>Penulis</th>
                                                         <th>Penerbit</th>
                                                         <th>Kategori</th>
-                                                        <th>Rak</th>
+                                                        <th>Sumber</th>
                                                         <th>Stok</th>
+                                                        <th>QTY Buku Datang</th>
                                                         <th>Harga/satuan</th>
                                                         <th>Aksi</th>
                                                     </tr>
@@ -41,6 +44,8 @@
                                                 <tbody>
                                                     <?php $__currentLoopData = $buku; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bku): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                         <tr>
+                                                            <td><?php echo e($bku->no_induk); ?> </td>
+                                                            <td><?php echo e($bku->tgl_dtg); ?> </td>
                                                             <td><?php echo e($bku->thn_masuk); ?></td>
                                                             <td>
                                                                 <img src="<?php echo e(asset('storage/' . $bku->image)); ?>" alt="..." width="30px" class="gambar">
@@ -51,8 +56,9 @@
                                                             <td><?php echo e($bku->penulis); ?></td>
                                                             <td><?php echo e($bku->penerbit); ?></td>
                                                             <td><?php echo e($bku->kategori); ?></td>
-                                                            <td><?php echo e($bku->rak); ?></td>
+                                                            <td><?php echo e($bku->sumber); ?></td>
                                                             <td><?php echo e($bku->stok); ?></td>
+                                                            <td><?php echo e($bku->qty_bku_dtg); ?></td>
                                                             <td>Rp. <?php echo e(number_format($bku->harga)); ?></td>
                                                             <td align="center">
                                                                 <a
@@ -86,7 +92,17 @@
                                                 <?php echo csrf_field(); ?>
                                                 <div class="modal-body">
                                                     <div class="form-group">
-                                                        <label for="exampleFormControlInput1" class="m-1">Tahun Masuk</label>
+                                                        <label for="exampleFormControlInput1" class="m-1">No. Induk</label>
+                                                        <input type="text" name="addno_induk" id="addno_induk"
+                                                            class="form-control" id="exampleFormControlInput1">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlInput1" class="m-1">Tanggal Datang</label>
+                                                        <input type="date" name="addtgl_dtg" id="addtgl_dtg"
+                                                            class="form-control" id="exampleFormControlInput1">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlInput1" class="m-1">Tahun Terbit</label>
                                                         <input type="text" name="addthn_masuk" id="addthn_masuk"
                                                             class="form-control" id="exampleFormControlInput1">
                                                     </div>
@@ -121,14 +137,18 @@
                                                             class="form-control" id="exampleFormControlInput1">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="exampleFormControlInput1" class="m-1">Rak</label>
-                                                        <input type="text" name="addrak" id="addrak"
+                                                        <label for="exampleFormControlInput1" class="m-1">Sumber</label>
+                                                        <input type="text" name="addsumber" id="addsumber"
                                                             class="form-control" id="exampleFormControlInput1">
                                                     </div>
-
                                                     <div class="form-group">
                                                         <label for="addstok" class="m-1">Stok</label>
                                                         <input type="number" name="addstok" id="addstok"
+                                                            class="form-control" id="exampleFormControlInput1">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="addstok" class="m-1">Qty Buku Datang</label>
+                                                        <input type="number" name="addqty_bku_dtg" id="addqty_bku_dtg"
                                                             class="form-control" id="exampleFormControlInput1">
                                                     </div>
                                                     <div class="form-group">

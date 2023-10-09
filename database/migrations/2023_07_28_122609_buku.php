@@ -15,6 +15,10 @@ class Buku extends Migration
     {
         Schema::create('buku', function (Blueprint $table) {
             $table->string('kd_buku', 50)->primary();
+            $table->string('no_induk', 50);
+            $table->string('sumber', 50);
+            $table->date('tgl_dtg');
+            $table->integer('qty_bku_dtg');
             $table->integer('thn_masuk', 5);
             $table->string('judul', 100);
             $table->string('penulis', 100);

@@ -97,8 +97,8 @@
                                     <p class="card-text">Stok: <?php echo e($bku->stok); ?></p>
                                     <div class="tombol">
                                         <button class="btn btn-primary"
-                                        onclick="openModal('<?php echo e($bku->kd_buku); ?>', '<?php echo e($bku->judul); ?>')">Pinjam
-                                        Buku</button>
+                                            onclick="openModal('<?php echo e($bku->kd_buku); ?>', '<?php echo e($bku->judul); ?>')">Pinjam
+                                            Buku</button>
                                     </div>
 
                                 </div>
@@ -207,7 +207,6 @@
                                         <label for="status">Status</label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="dipinjam">Dipinjam</option>
-                                            
                                         </select>
                                     </div>
                                 </div>

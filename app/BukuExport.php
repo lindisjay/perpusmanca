@@ -17,16 +17,19 @@ class BukuExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
+            'No Induk',
+            'Tanggal Datang',
+            'Tahun Terbit',
+            'Image',
             'Kode Buku',
-            'Tahun Masuk',
             'Judul',
             'Pengarang',
             'Penerbit',
             'Kategori',
-            'Rak',
+            'Sumber',
             'Stok',
-            'Harga',
-            'Image'
+            'QTY Buku Datang',
+            'Harga'
         ];
     }
 }

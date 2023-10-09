@@ -97,8 +97,8 @@
                                     <p class="card-text">Stok: {{ $bku->stok }}</p>
                                     <div class="tombol">
                                         <button class="btn btn-primary"
-                                        onclick="openModal('{{ $bku->kd_buku }}', '{{ $bku->judul }}')">Pinjam
-                                        Buku</button>
+                                            onclick="openModal('{{ $bku->kd_buku }}', '{{ $bku->judul }}')">Pinjam
+                                            Buku</button>
                                     </div>
 
                                 </div>
@@ -210,7 +210,6 @@
                                         <label for="status">Status</label>
                                         <select name="status" id="status" class="form-control">
                                             <option value="dipinjam">Dipinjam</option>
-                                            {{-- <option value="kembali">Kembali</option> --}}
                                         </select>
                                     </div>
                                 </div>
